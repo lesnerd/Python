@@ -18,11 +18,11 @@ def Helper_Set(given_array, subset, i):
 def Print_All_Subsets_Iterative(setArr):
     numberOfRanges = int(pow(2,len(setArr)))
     for i in range(numberOfRanges): 
-        print("start of subset")
+        print("======== start of subset ========")
         for j in range(len(setArr)) :
             if (i & (1 << j)): 
                 print(setArr[j])
-        print("end of subset")
+        print("======== end of subset ========")
     
 
 

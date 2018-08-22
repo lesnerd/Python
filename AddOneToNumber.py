@@ -20,6 +20,7 @@ def Add_One(given_array):
 def main():
     arr = [1, 2, 3, 9]
     print(Add_One(arr))
+    print(Add_One([9, 5, 4, 9]))
   
 if __name__ == "__main__": #ifdef
     main()

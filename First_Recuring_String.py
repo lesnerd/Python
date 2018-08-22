@@ -21,7 +21,7 @@ def First_None_Recurring(input_string):
 
 def main():
     #print(First_Recurring_String("abcdb"))
-    print(First_None_Recurring('tbbcac'))
+    print(First_None_Recurring('ttbbbccaac'))
 
 
 
