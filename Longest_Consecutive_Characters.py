@@ -18,7 +18,8 @@ def Longest_Sub_Sequence(seq):
 
 
 def main():
-    print(Longest_Sub_Sequence("AABCDDBBBEA"))
+    retVal = Longest_Sub_Sequence("AABCDDBBBEA")
+    print(retVal)
 
 
 if __name__ == "__main__": #ifdef
