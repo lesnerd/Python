@@ -34,7 +34,7 @@ def InOrderTraversal(root):
 
     if root.left is not None:
         InOrderTraversal(root.left)
-    
+
     print(root.key, end=' ')
 
     if root.right is not None:
@@ -46,7 +46,6 @@ def TreeDepth(root):
         return 1
 
     return max(TreeDepth(root.left), TreeDepth(root.right)) + 1
-
 
 
 def PrintTree(root):
@@ -63,7 +62,7 @@ def PrintTree(root):
         while levelNumber > 0:
             current_node = q.popleft()
             levelNumber = levelNumber - 1
-            
+
             if startLine:
                 for x in range(spaces):
                     print('    ', end='')
@@ -74,27 +73,23 @@ def PrintTree(root):
                 print(current_node.key, end='\n')
             else:
                 print(current_node.key, end='  ')
-            
+
             if current_node.left != None:
                 q.append(current_node.left)
             if current_node.right != None:
                 q.append(current_node.right)
-            
-        
+
 
 def main():
     root = Node(8)
-    keys = [4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15]
+    keys = [13, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15]
 
     for key in keys:
         Add(Node(key), root)
 
     PrintTree(root)
-    #InOrderTraversal(root)
+    # InOrderTraversal(root)
 
-  
-if __name__ == "__main__": #ifdef
+
+if __name__ == "__main__":  # ifdef
     main()
-
-
-
