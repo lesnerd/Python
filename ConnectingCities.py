@@ -8,5 +8,5 @@ def main():
     ConnectCities(len(connectedCities), connectedCities, 6, costConnecToCity)
 
 
-if __name__ == "__main__":   # ifdef
+if __name__ == "__main__":  # ifdef
     main()
