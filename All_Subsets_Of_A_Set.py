@@ -28,8 +28,8 @@ def Print_All_Subsets_Iterative(setArr):
 
 def main():
     arr = [1, 2, 3]
-    # Print_All_Subsets_Iterative(arr)
-    All_Subsets(arr)
+    Print_All_Subsets_Iterative(arr)
+    #All_Subsets(arr)
 
 
 if __name__ == "__main__":  # ifdef
