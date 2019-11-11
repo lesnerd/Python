@@ -2,7 +2,7 @@ class cell:
 	
 	def __init__(self, x = 0, y = 0, dist = 0): 
 		self.x = x 
-		self.y = y 
+		self.y = y  
 		self.dist = dist 
 		
 def isInside(x, y, N): 
