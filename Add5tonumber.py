@@ -12,7 +12,7 @@ def solution(N):
         retString.append(n)
     return int(''.join(retString))
 
-def solutionMutable(N): # Not optimized solution 
+def solutionImutable(N): # Not optimized solution 
     retString = ''
     added = 0
     intStringified = str(N)
