@@ -1,4 +1,4 @@
-def solution(N):
+def Asolution(N):
     retString = list()
     added = 0
     intStringified = list(str(N))
@@ -27,6 +27,22 @@ def solution(N):
     return int(''.join(retString))
 
 
+def solution(N):
+    retString = list()
+    added = 0
+    intStringified = list(str(N))
+    for n in intStringified:
+        if n == '-':
+            return int('-5' + ''.join(intStringified[1:]))
+        if int(n) <= 5:
+            if added == 0:
+                retString.append(str(5))
+                added = 1
+        retString.append(n)
+    return int(''.join(retString))
+
+
+print(solution(666))  # 5268
 print(solution(268))  # 5268
 print(solution(670))  # 6750
 print(solution(-999))  # -5999

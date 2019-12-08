@@ -18,9 +18,9 @@ def solution(A):
     return biggestNumber
 
 
-        
-
-
-print(solution([3,2,-2,5,-3]))
-print(solution([1,1,2,-1,2,-1]))
-print(solution([1,2,3,-4]))
+print(solution([3, 2, -2, 5, -3]))  # 3 > 2
+print(solution([1, 1, 2, -1, 2, -1]))  # 1
+print(solution([1, 2, 3, -4]))  # 0
+print(solution([-1, -2, -3, -4]))  # 0
+print(solution([1, 2, 3, 4]))  # 0
+print(solution([]))  # 0
