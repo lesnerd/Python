@@ -42,7 +42,7 @@ def solution(N):
     return int(''.join(retString))
 
 
-print(solution(666))  # 5268
+print(solution(666))  # 6665
 print(solution(268))  # 5268
 print(solution(670))  # 6750
 print(solution(-999))  # -5999
