@@ -79,6 +79,23 @@ def PrintTree(root):
             if current_node.right != None:
                 q.append(current_node.right)
 
+def treePathAddsUpToK(tree, k):
+    if tree is None:
+        return k == 0
+
+    ans = 0
+    subSum = k - tree.key
+
+    if subSum == 0 and tree.left == None and tree.right == None:
+        return True
+
+    if tree.left is not None:
+        ans = ans or treePathAddsUpToK(tree.left, subSum)
+
+    if tree.right is not None:
+        ans = ans or treePathAddsUpToK(tree.right, subSum)
+
+    return ans
 
 def main():
     root = Node(8)
@@ -89,6 +106,7 @@ def main():
 
     PrintTree(root)
     # InOrderTraversal(root)
+    print(treePathAddsUpToK(root, 39))
 
 
 if __name__ == "__main__":  # ifdef
