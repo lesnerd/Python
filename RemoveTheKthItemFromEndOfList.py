@@ -22,6 +22,9 @@ class SpecialLikedList:
                 localRoot = localRoot.next
             prev.next = Node(item)
 
+    def sortedInsert(item):
+        pass
+
     def printList(self):
         if self.root is None:
             print("Nothing to print.")
