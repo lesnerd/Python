@@ -22,12 +22,15 @@ class SpecialLikedList:
                 localRoot = localRoot.next
             prev.next = Node(item)
 
+    def sortedInsert(self, item):
+        pass
+
     def printList(self):
         if self.root is None:
             print("Nothing to print.")
         head = self.root
         while head != None:
-            print(head.value)
+            print(head.value, end=' ')
             head = head.next
 
     def removeKthNodeFromEnd(self, k):  # Do this in one pass
@@ -59,8 +62,9 @@ lst.insert(2)
 lst.insert(3)
 lst.insert(4)
 lst.insert(5)
-
+print("\nAfter insertion: ")
 lst.printList()
 
 lst.removeKthNodeFromEnd(2)
+print("\nAfter removing the K-th element: ")
 lst.printList()
