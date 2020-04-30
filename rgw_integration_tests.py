@@ -4,30 +4,39 @@ import time
 import logging
 import json
 
-logging.basicConfig(filename='pyrgw.log', format='%(name)s %(levelname)s %(message)s')
+logging.basicConfig(filename='pyrgw.log',
+                    format='%(name)s %(levelname)s %(message)s')
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
+
 class Tools(object):
 
-    def print_request(self, req):
+    @staticmethod
+    def print_request(req):
         print('============ Request ============\n')
         print('HTTP/1.1 {method} {url}\n{headers}\n\n{body}'.format(
             method=req.method,
             url=req.url,
-            headers='\n'.join('{}: {}'.format(k, v) for k, v in req.headers.items()),
-            body=json.dumps(json.loads(req.body.decode("utf-8") if req.body is not None else '{}'), indent=4),
+            headers='\n'.join('{}: {}'.format(k, v)
+                              for k, v in req.headers.items()),
+            body=json.dumps(json.loads(req.body.decode("utf-8")
+                                       if req.body is not None else '{}'), indent=4),
         ))
 
-    def print_response(self, res):
+    @staticmethod
+    def print_response(res):
         print('============ Response ============\n')
         print('HTTP/1.1 {status_code}\n{headers}\n\n{body}'.format(
             status_code=res.status_code,
-            headers='\n'.join('{}: {}'.format(k, v) for k, v in res.headers.items()),
+            headers='\n'.join('{}: {}'.format(k, v)
+                              for k, v in res.headers.items()),
             body=json.dumps(json.loads(res.content.decode("utf-8")), indent=4),
         ))
 
 # For reference https://requests.readthedocs.io/en/master/
+
+
 class TestRGW(unittest.TestCase):
 
     def __init__(self, methodName):
@@ -41,11 +50,11 @@ class TestRGW(unittest.TestCase):
                    'TouchPoint': 'MobileShopper',
                    'StoreID': '110'}
         r = requests.put(url, headers=headers)
-        tool = Tools()
-        tool.print_request(r.request)
-        tool.print_response(r)
+        Tools.print_request(r.request)
+        Tools.print_response(r)
         parsed = json.loads(r.text)
-        assert parsed.get('SalesTransaction').get('TransactionStatus') == 'InProcess'
+        assert parsed.get('SalesTransaction').get(
+            'TransactionStatus') == 'InProcess'
 
 
 if __name__ == '__main__':
