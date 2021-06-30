@@ -42,10 +42,10 @@ def cut_the_sticks(arr):
     
     retArr = []
     n = len(arr)
-    for pair in dic:
+    for k, v in dic:
         retArr.append(n)
-        n-= pair[1]
-        print(pair)    
+        n-= v
+        print("[K: {}: V: {}]".format(k, v))    
     return retArr
 
 
