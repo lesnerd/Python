@@ -27,7 +27,7 @@ def printArray( a):
         print(k, sep=' ')
    
 
-arr = [0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1]
+arr = [2,0,1]#[0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1]
 print("Array before segregation : {}".format(arr))
 arr = sort012(arr)
 print("Array after segregation : {}".format(arr))
