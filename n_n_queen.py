@@ -41,15 +41,50 @@ def nQueen(mat, r):
             nQueen(mat, r + 1)
             # backtrack and remove the queen from the current square
             mat[r][i] = '–'
+
+
+# =============================================================================
+def solveNQeens(n):
+    column = set()
+    posDiagnal = set()
+    negDiagnal = set()
+
+    result = []
+    board = [["_"] * n for i in range(n)]
+
+    def backTrack(row):
+        if row == n:
+            solution = [ "".join(r) for r in board]
+            result.append(solution)
+            return
+        
+        for col in range(n):
+            if col in column or row + col  in posDiagnal or row - col in negDiagnal:
+                continue
+
+            column.add(col)
+            posDiagnal.add(row + col)
+            negDiagnal.add(row - col)
+            board[row][col] = "Q"
+
+            backTrack(row + 1)
+
+            column.remove(col)
+            posDiagnal.remove(row + col)
+            negDiagnal.remove(row - col)
+            board[row][col] = "_"
+    backTrack(0)
+    return result
  
  
 if __name__ == '__main__':
  
-    # `N × N` chessboard
-    N = 8
+    print(solveNQeens(4))
+    # # `N × N` chessboard
+    # N = 4
  
-    # `mat[][]` keeps track of the position of queens in
-    # the current configuration
-    mat = [['–' for x in range(N)] for y in range(N)]
+    # # `mat[][]` keeps track of the position of queens in
+    # # the current configuration
+    # mat = [['–' for x in range(N)] for y in range(N)]
  
-    nQueen(mat, 0)
+    # nQueen(mat, 0)

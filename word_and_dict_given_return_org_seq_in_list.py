@@ -19,7 +19,6 @@ Given the set of words 'bed', 'bath', 'bedbath', 'and', 'beyond', and the string
 # print(wordBreak("thequickbrownfox", ["the", "quick", "brown", "fox"]))
 
 
-
 def wordBreak(s, wordDict) -> bool:
     ret = []
     for i in range(0, len(s)):

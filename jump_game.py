@@ -27,5 +27,15 @@ def dfs(arr, i, memo):
          return True
     return False
 
+# Can be reached from index 0 to index len(arr) - 1. Time complexity: O(n)
+def can_jump_greedy(arr):
+    goal = len(arr) - 1
+    for i in range(len(arr) - 1, -1, -1):
+        if arr[i] + i >= goal:
+            goal = i
+        
+    return goal == 0
+
+
 
 print(solution([3, 4, 2, 3, 0, 3, 1, 2, 1], 7))
