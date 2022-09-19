@@ -18,44 +18,56 @@ Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
 Example 2:
 Input: board = [[1,1],[1,0]]
 Output: [[1,1],[1,1]]
+
+Do it in-place. The board needs to be updated simultaneously: You cannot update some cells first and then use their updated values to update other cells.
 '''
 
 def game_of_life(board):
-    rows = len(board[0])
-    cols = len(board)  
-    new_board = [[0 for i in range(rows)] for j in range(cols)]
+    # Original | New | Temporary State
+    #   0      |  0  |  0
+    #   1      |  0  |  1 
+    #   0      |  1  |  2
+    #   1      |  1  |  3
 
-    for i in range(cols):
-        for j in range(rows):
-            count = count_live(board, i, j)
-            if board[i][j] == 1 and (count < 2 or count > 3): # Rule 1 and 3 - a live cell with fewer than 2 or more than 3 live neighbors dies
-                new_board[i][j] = 0
-            elif board[i][j] == 0 and count == 3: # rule 4 - dead cell with 3 live neighbors becomes live
-                new_board[i][j] = 1
-            elif board[i][j] == 1 and (count == 2 or count == 3): # rule 2 - live cell with 2 or 3 live neighbors lives on
-                new_board[i][j] = 1
+    rows = len(board)
+    cols = len(board[0])  
 
-    return new_board
+    for r in range(rows):
+        for c in range(cols):
+            live_neighbors = count_live(board, r, c)
+            if board[r][c] == 1 and (live_neighbors == 2 or live_neighbors == 3):
+                board[r][c] = 3
+            elif live_neighbors == 3:
+                board[r][c] = 2
+
+    for r in range(rows):
+        for c in range(cols):
+            if board[r][c] == 1:
+                board[r][c] = 0
+            elif board[r][c] == 2 or board[r][c] == 3:
+                board[r][c] = 1
+
+    return board
 
 def count_live(board, i, j):
     count = 0
-    cols = len(board) - 1
-    rows = len(board[0])
-    if i + 1 < rows and j + 1 < cols and board[i + 1][j + 1] == 1: # bottom right
+    cols = len(board[0])
+    rows = len(board)
+    if i + 1 < rows and j + 1 < cols and (board[i + 1][j + 1] == 1 or board[i + 1][j + 1] == 3): # bottom right
         count += 1
-    if i + 1 < rows and j - 1 >= 0 and board[i + 1][j - 1] == 1: # bottom left
+    if i + 1 < rows and j - 1 >= 0 and (board[i + 1][j - 1] == 1 or board[i + 1][j - 1] == 3): # bottom left
         count += 1
-    if i - 1 >= 0 and j + 1 < cols and board[i - 1][j + 1] == 1: # top right
+    if i - 1 >= 0 and j + 1 < cols and (board[i - 1][j + 1] == 1 or board[i - 1][j + 1] == 3): # top right
         count += 1
-    if i - 1 >= 0 and j - 1 >= 0 and board[i - 1][j - 1] == 1: # top left
+    if i - 1 >= 0 and j - 1 >= 0 and (board[i - 1][j - 1] == 1 or board[i - 1][j - 1] == 3): # top left
         count += 1
-    if j - 1 >= 0 and board[i][j - 1] == 1:
+    if j - 1 >= 0 and (board[i][j - 1] == 1 or board[i][j - 1] == 3):
         count += 1
-    if j + 1 < cols and board[i][j + 1] == 1:
+    if j + 1 < cols and (board[i][j + 1] == 1 or board[i][j + 1] == 3):
         count += 1
-    if i + 1 < rows and board[i + 1][j] == 1:
+    if i + 1 < rows and (board[i + 1][j] == 1 or board[i + 1][j] == 3):
         count += 1
-    if i - 1 >= 0 and board[i - 1][j] == 1:
+    if i - 1 >= 0 and (board[i - 1][j] == 1 or board[i - 1][j] == 3):
         count += 1
     return count
 
