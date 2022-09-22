@@ -26,7 +26,7 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
 '''
 
-def twoSum(nums, target):
+def twoSumUnordered(nums, target):
     d = {}
     for i, n in enumerate(nums):
         m = target - n
@@ -35,4 +35,4 @@ def twoSum(nums, target):
         else:
             d[n] = i
 
-print(twoSum([2,7,11,15], 9))
+print(twoSumUnordered([2,7,11,15], 9))
