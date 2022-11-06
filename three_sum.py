@@ -26,7 +26,7 @@ Output: [[0,0,0]]
 Explanation: The only possible triplet sums up to 0.
 '''
 
-def threeSum(nums):
+def threeSum(nums, target):
     nums.sort()
     res = []
     for i, a in enumerate(nums):
@@ -36,17 +36,20 @@ def threeSum(nums):
         l, r = i + 1, len(nums) - 1
         while l < r:
             threeSum = a + nums[l] + nums[r]
-            if threeSum < 0:
+            if threeSum < target:
                 l += 1
-            elif threeSum > 0:
+            elif threeSum > target:
                 r -= 1
             else:
                 res.append([a, nums[l], nums[r]])
                 l += 1
-                while nums[l] == nums[l + 1] and l < r:
+                while l < r and nums[l] == nums[l + 1]:
                     l += 1
 
     return res
 
 nums = [-1,0,1,2,-1,-4]
-print(threeSum(nums))
+print(threeSum(nums, 0))
+
+nums = [12, 3, 6, 1, 6, 9]
+print(threeSum(nums, 24))
