@@ -34,6 +34,11 @@ class LinkedList:
 
 
 
+def reversePrint(llist):
+    if llist:
+        reversePrint(llist.next)
+        print(llist.data)
+    return
 
 
 
@@ -42,9 +47,13 @@ llist.push(20)
 llist.push(4) 
 llist.push(15) 
 llist.push(85) 
+
   
 print("Given Linked List")
 llist.printList() 
 llist.reverse() 
 print("\nReversed Linked List")
 llist.printList() 
+
+print("\nPrint in reverse order")
+reversePrint(llist.head)
