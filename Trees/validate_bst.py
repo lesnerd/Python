@@ -29,14 +29,14 @@ class TreeNode:
 
 def isValidBST(root):
     
-    def valid(root, left_boundary, right_boundary):
+    def valid(root, left, right):
         if not root:
             return True
 
-        if not (root.val < right_boundary and root.val > left_boundary):
+        if not (root.val < right and root.val > left):
             return False
 
-        return valid(root.left, left_boundary, root.val) and valid(root.right, root.val, right_boundary)
+        return valid(root.left, left, root.val) and valid(root.right, root.val, right)
     return valid(root, float('-inf'), float('inf'))
 
 
