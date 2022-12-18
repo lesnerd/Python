@@ -1,12 +1,12 @@
 class Node:
-    def __init__(self, info):
-        self.info = info
+    def __init__(self, val):
+        self.val = val
         self.left = None
         self.right = None
         self.level = None
 
     def __str__(self):
-        return str(self.info)
+        return str(self.val)
 
 
 class BinarySearchTree:
@@ -20,13 +20,13 @@ class BinarySearchTree:
             current = self.root
 
             while True:
-                if val < current.info:
+                if val < current.val:
                     if current.left:
                         current = current.left
                     else:
                         current.left = Node(val)
                         break
-                elif val > current.info:
+                elif val > current.val:
                     if current.right:
                         current = current.right
                     else:
@@ -40,7 +40,7 @@ class BinarySearchTree:
 Node is defined as
 self.left (the left child of the node)
 self.right (the right child of the node)
-self.info (the value of the node)
+self.val (the value of the node)
 """
 
 
@@ -52,7 +52,7 @@ def levelOrder(root):
         size = len(stack)
         while size > 0:
             node = stack.pop(0)
-            print(node.info, end=' ')
+            print(node.val, end=' ')
             if node.left is not None:
                 stack.append(node.left)
             if node.right is not None:
