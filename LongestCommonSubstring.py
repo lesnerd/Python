@@ -6,6 +6,24 @@
 # "", "..." => ""
 # "ABBA", "ABCABA" => "ABBA"
 
+class Val:
+    def __init__(self, value, string):
+        self.value = value
+        self.string = string
+
+def LongestCommonSubstring_length(str1, str2):
+    dp = [[Val(0, "")] * (len(str2) + 1) for i in range(len(str1) + 1)]
+
+    for i in range(len(str1) - 1, -1, -1):
+        for j in range(len(str2) - 1, -1, -1):
+            if str1[i] == str2[j]:
+                dp[i][j] = Val(dp[i + 1][j + 1].value + 1, dp[i + 1][j + 1].string + str1[i])
+                # dp[i][j] = dp[i + 1][j + 1] + 1
+            else:
+                dp[i][j] = Val(max(dp[i + 1][j].value, dp[i][j + 1].value), dp[i + 1][j].string if dp[i + 1][j].value > dp[i][j + 1].value else dp[i][j + 1].string)
+                # dp[i][j] = max(dp[i + 1][j], dp[i][j + 1])
+    
+    return dp[0][0]
 
 def LongestCommonSubstring(str1, str2):
     arr = [[0] * (len(str1) + 1) for c in range(len(str2) + 1)]
@@ -51,7 +69,11 @@ def LongestCommonSubstring(str1, str2):
 
 
 def main():
-    LongestCommonSubstring("ABBA", "ABCABA")
+    # LongestCommonSubstring("ABBA", "ABCABA")
+    # obj = LongestCommonSubstring_length("ABBA", "ABCABA")
+    # print(f"Value: {obj.value}, String: {obj.string}")
+    obj = LongestCommonSubstring_length("ABAZDC", "BACBAD") # returns ABAD
+    print(f"Value: {obj.value}, String: {obj.string[::-1]}")
 
 
 if __name__ == "__main__":
